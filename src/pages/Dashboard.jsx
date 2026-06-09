@@ -11,7 +11,6 @@ import ExportCSV from "../components/ExportCSV";
 function Dashboard() {
   const [expenses, setExpenses] = useState([]);
 
-  // 🔥 Fetch user expenses
   useEffect(() => {
     if (!auth.currentUser) return;
 
@@ -25,7 +24,6 @@ function Dashboard() {
         id: doc.id,
         ...doc.data()
       }));
-
       setExpenses(data);
     });
 
@@ -38,83 +36,61 @@ function Dashboard() {
     0
   );
 
-  const totalIncome = 50000; // (future me user input karenge)
+  const totalIncome = 50000;
   const balance = totalIncome - totalExpense;
 
   return (
-    <div style={styles.container}>
+    <div className="container">
+
+      {/* HEADER */}
       <h1>💰 Expense Tracker Pro</h1>
 
-      {/* 🔐 Actions */}
-      <div style={styles.actions}>
+      {/* ACTION BUTTONS */}
+      <div className="flex">
         <Logout />
         <ExportCSV />
       </div>
 
-      {/* 📊 Summary Cards */}
-      <div style={styles.cards}>
-        <div style={styles.card}>
-          <h3>Total Income</h3>
+      {/* STATS CARDS */}
+      <div className="flex">
+        <div className="card">
+          <h3>Income</h3>
           <p>₹{totalIncome}</p>
         </div>
 
-        <div style={styles.card}>
-          <h3>Total Expense</h3>
+        <div className="card">
+          <h3>Expense</h3>
           <p>₹{totalExpense}</p>
         </div>
 
-        <div style={styles.card}>
+        <div className="card">
           <h3>Balance</h3>
           <p>₹{balance}</p>
         </div>
       </div>
 
-      {/* ➕ Add Expense */}
+      {/* FORM */}
       <ExpenseForm />
 
-      {/* 📊 Chart + List */}
-      <div style={styles.bottom}>
-        <ExpenseChart />
-        <ExpenseList />
+      {/* MAIN SECTION */}
+      <div className="flex" style={{ marginTop: "20px" }}>
+
+        {/* CHART */}
+        <div className="chart-box">
+          <h3>📊 Expense Analytics</h3>
+          <ExpenseChart />
+        </div>
+
+        {/* LIST */}
+        <div className="card" style={{ flex: 1 }}>
+          <h3>📋 Expense List</h3>
+          <ExpenseList />
+        </div>
+
       </div>
+
     </div>
   );
 }
-
-const styles = {
-  container: {
-    padding: "20px",
-    background: "#f4f6f9",
-    minHeight: "100vh"
-  },
-
-  actions: {
-    display: "flex",
-    gap: "10px",
-    marginBottom: "20px"
-  },
-
-  cards: {
-    display: "flex",
-    gap: "20px",
-    flexWrap: "wrap",
-    marginBottom: "20px"
-  },
-
-  card: {
-    background: "white",
-    padding: "20px",
-    borderRadius: "10px",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-    minWidth: "150px"
-  },
-
-  bottom: {
-    display: "flex",
-    gap: "20px",
-    flexWrap: "wrap",
-    marginTop: "20px"
-  }
-};
 
 export default Dashboard;

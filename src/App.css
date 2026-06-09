@@ -1,108 +1,93 @@
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f6f9;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e1b4b, #0b3b5a);
+  color: #e2e8f0;
 }
 
-/* App Container */
-.app-container {
+/* Container */
+.container {
   padding: 20px;
 }
 
-/* Header */
-.header {
+/* Heading */
+h1 {
   text-align: center;
-  margin-bottom: 30px;
+  color: #f8fafc;
+  margin-bottom: 20px;
 }
 
-.header h1 {
-  color: #2c3e50;
-  margin: 0;
+/* FLEX */
+.flex {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.header p {
-  color: #7f8c8d;
-}
-
-/* Dashboard Cards */
-.dashboard {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
+/* CARD (dark glass style) */
 .card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  color: #e2e8f0;
+  min-width: 150px;
   transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  border: 1px solid #38bdf8;
 }
 
-/* Card Titles */
-.card h3 {
-  margin: 0;
-  color: #555;
-}
-
-/* Amount */
-.card p {
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-/* Colors */
-.income {
-  border-left: 6px solid green;
-}
-
-.expense {
-  border-left: 6px solid red;
-}
-
-.savings {
-  border-left: 6px solid blue;
-}
-
-.budget {
-  border-left: 6px solid orange;
-}
-
-/* Form Styling */
-form {
-  background: white;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  width: 300px;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  outline: none;
-}
-
+/* BUTTONS */
 button {
-  width: 100%;
-  padding: 10px;
-  background: #27ae60;
+  background: linear-gradient(45deg, #06b6d4, #6366f1);
   color: white;
   border: none;
-  border-radius: 6px;
+  padding: 10px 14px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
 button:hover {
-  background: #219150;
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #22d3ee, #818cf8);
+}
+
+/* INPUTS */
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  outline: none;
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+/* FORM */
+form {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-top: 20px;
+}
+
+/* CHART BOX */
+.chart-box {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
 }
