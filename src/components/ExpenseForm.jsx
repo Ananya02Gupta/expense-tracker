@@ -10,7 +10,6 @@ function ExpenseForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // validation
     if (!amount || !category) {
       alert("Please fill Amount and Category");
       return;
@@ -22,12 +21,11 @@ function ExpenseForm() {
         category,
         note,
         userId: auth.currentUser?.uid,
-        createdAt: Timestamp.now()
+        createdAt: Timestamp.now(),
       });
 
       alert("Expense Added Successfully 🎉");
 
-      // clear form
       setAmount("");
       setCategory("");
       setNote("");
@@ -38,7 +36,7 @@ function ExpenseForm() {
 
   return (
     <div style={styles.container}>
-      <h2>➕ Add Expense</h2>
+      <h2 style={styles.heading}>➕ Add Expense</h2>
 
       <form onSubmit={handleSubmit} style={styles.form}>
         <input
@@ -75,32 +73,46 @@ function ExpenseForm() {
 
 const styles = {
   container: {
-    background: "#fff",
+    background: "rgba(255,255,255,0.15)",
+    backdropFilter: "blur(12px)",
     padding: "20px",
     marginTop: "20px",
-    borderRadius: "12px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+    borderRadius: "16px",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
   },
+
+  heading: {
+    color: "#ffffff",
+    marginBottom: "15px",
+  },
+
   form: {
     display: "flex",
     flexDirection: "column",
-    gap: "10px"
+    gap: "12px",
   },
+
   input: {
-    padding: "10px",
-    border: "1px solid #ddd",
-    borderRadius: "6px",
-    outline: "none"
-  },
-  button: {
-    padding: "10px",
-    background: "green",
-    color: "white",
+    padding: "12px",
     border: "none",
-    borderRadius: "6px",
+    borderRadius: "10px",
+    outline: "none",
+    background: "#ffffff",
+    color: "#000000",
+    fontSize: "16px",
+    fontWeight: "500",
+  },
+
+  button: {
+    padding: "12px",
+    background: "linear-gradient(135deg, #00c6ff, #0072ff)",
+    color: "#ffffff",
+    border: "none",
+    borderRadius: "10px",
     cursor: "pointer",
-    fontSize: "16px"
-  }
+    fontSize: "16px",
+    fontWeight: "bold",
+  },
 };
 
 export default ExpenseForm;
